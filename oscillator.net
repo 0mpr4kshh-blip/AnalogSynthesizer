@@ -1,0 +1,37 @@
+* C:\users\omprakash\Documents\LTspiceXVII\oscillator.asc
+R1 N015 0 1000000k
+C1 N015 0 6.6n
+D1 N016 N015 D
+A1 N015 0 0 0 0 N016 0 0 SCHMITT Vt=5 Vh= 4 Vhigh=10V Trise=20n Tfall=1m
+R2 N001 0 1000k
+C2 N001 0 6.6n
+D2 N002 N001 D
+A2 N001 0 0 0 0 N002 0 0 SCHMITT Vt=5 Vh= 4 Vhigh=10V Trise=20n Tfall=1m
+R3 N003 N001 100k
+R4 N003 N015 100k
+XU1 0 N003 N007 N017 N004 level1 Avol=1Meg GBW=10Meg Vos=0 En=0 Enk=0 In=0 Ink=0 Rin=500Meg
+V1 N007 N017 12V
+R6 N004 N003 100k
+R7 N009 N004 1k
+XU2 0 N005 N008 N018 N006 level1 Avol=1Meg GBW=10Meg Vos=0 En=0 Enk=0 In=0 Ink=0 Rin=500Meg
+V2 N008 N018 12V
+R5 N006 N005 5k
+R8 N010 N006 1k
+R9 N005 N009 100k
+C3 N011 N010 1µ
+R10 N011 0 25k
+C4 N012 N011 1µ
+R11 N012 0 25k
+C5 N013 N012 1µ
+R12 N013 0 25k
+C6 N014 N013 1µ
+R13 N014 0 25k
+R14 audio N014 1k
+C7 audio 0 0.1µ
+.model D D
+.lib C:\users\omprakash\Documents\LTspiceXVII\lib\cmp\standard.dio
+.tran 1
+.wave saw.wav 16 44100 V(audio)
+.lib UniversalOpAmp1.lib
+.backanno
+.end
